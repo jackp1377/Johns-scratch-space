@@ -2,6 +2,7 @@ public class BaseSquare {
     int[][] mainArr;
     //int[][] countArr;
     boolean[] correctArr;
+    int magicNum;
     public BaseSquare() {}
     public BaseSquare(int[][] mainArr, boolean[] correctArr) {
         this.mainArr = mainArr;
@@ -29,7 +30,7 @@ public class BaseSquare {
     }
 
     public boolean verify() {
-        if (rowCheck() && colCheck() && countCheck() && diagCheck()) {
+        if (countCheck() && rowCheck() && colCheck()  && diagCheck()) {
             return true;
         } else {
             return false;
@@ -42,7 +43,10 @@ public class BaseSquare {
             if (!searchCount(i)) {
                 return false;
             }
+
         }
+
+
 
         return true;
     }
@@ -70,13 +74,18 @@ public class BaseSquare {
         }
 
         int ref = total[0];
+        magicNum = total[1];
         for (int i = 0; i < total.length; i++) {
             //System.out.println(total[i]);
             if (total[i] != ref) {
                 return false;
             }
         }
-        return true;
+        if (magicNum == ref) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean colCheck() {
@@ -95,7 +104,9 @@ public class BaseSquare {
                 return false;
             }
         }
-
+        if (magicNum != ref) {
+            return false;
+        }
         return true;
     }
 
@@ -116,7 +127,8 @@ public class BaseSquare {
 
         //System.out.println(diag1);
         //System.out.println(diag2);
-        if (diag1 != diag2) {
+        if (diag1 != diag2 || diag1 != magicNum) {
+
             return false;
         }
         return true;
