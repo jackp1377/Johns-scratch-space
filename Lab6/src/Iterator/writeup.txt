@@ -1,0 +1,14 @@
+This demonstrates the iterator pattern
+
+We can see that if we want to see all of our songs normally, we must make 3 different loops iterating
+through each individual set of songs. These all use different data structures, too, meaning our
+implementations between loops are different
+
+However, using the iterator pattern, we obscure these differences in by handling iteration
+within each class using universal iterators from that package, which can handle all sorts of data structs.
+
+Also, the fact that each category implements SongIterator means we can group them together with no
+complications.
+
+So, the DJ iterates through each category of songs not manually but by accessing iterators that these
+objects return over themselves.

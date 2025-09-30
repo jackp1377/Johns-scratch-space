@@ -1,0 +1,27 @@
+Using the Composite pattern, we group data by inheriting from larger groups of data. This allows us to
+    process object in a natural tree pattern, giving us the ability to both group them precisely and
+    also to run any sort of tree algorithm on the structure as a whole (with some changes tailored to
+    the specific structure)
+
+Also note that the tree we generate is not a BST
+
+Songs are the atoms (leaves), and each songGroup is a layer of categorization (can't be leaves).
+Here is what the tree we've just made looks like (more or less):
+
+
+            Songlist (all songs)
+                        \
+                      Industrial
+       /          /                \                    \
+    Dubstep     Heavy Metal  Industrial song 1    Industrial song 2
+   /     \        /        \
+ song 1  song 2  song 1  song 2
+
+
+ Please note that the Iterator package we import handles our data like a tree.
+ At first glance it seems we are going through the data in a linear manner, but the Iterator does
+    indeed respect the data's tree-ness
+
+This composite structure also supports subgenres due to how the data is stored - we know that Dubstep
+    and metal are not subgenres (as far as I know) of Industrial music, but we want to show that
+    SongGroups can be stored within SongGroups
